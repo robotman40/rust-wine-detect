@@ -21,6 +21,6 @@ fn main() {
         }
     }
     // This is for the case the program is not compiled for Windows, but this could be modified anyway, so...
-    println!("This is intended to run on Windows");
+    println!("This is intended to be run as a Win32 application");
     process::exit(1);
 }
