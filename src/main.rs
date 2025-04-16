@@ -12,7 +12,7 @@ fn main() {
 
             // We check if getting the Wine-exclusive function `wine_get_unix_file_name` in kernel32 results in an error or not
             match kernel32.get::<*mut u32>(b"wine_get_unix_file_name") {
-                Ok(_) => println!("Detected Wine"),
+                Ok(value) => println!("Detected Wine at {value:?}"),
                 Err(_) => println!("Did not detect Wine")
             }
 
