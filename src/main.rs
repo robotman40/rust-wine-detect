@@ -11,8 +11,8 @@ fn main() {
             let kernel32 = Library::new("kernel32.dll").unwrap();
 
             // We check if getting the Wine-exclusive function `wine_get_unix_file_name` in kernel32 results in an error or not
-            match kernel32.get::<*mut u32>(b"wine_get_unix_file_name") {
-                Ok(value) => println!("Detected Wine at {value:?}"),
+            match kernel32.get::<*const ()>(b"wine_get_unix_file_name") {
+                Ok(value) => println!("Detected Wine at {:?}", value.try_as_raw_ptr().unwrap()),
                 Err(_) => println!("Did not detect Wine")
             }
 
